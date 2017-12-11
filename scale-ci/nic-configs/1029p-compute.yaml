@@ -81,6 +81,11 @@ resources:
         os_net_config:
           network_config:
             -
+              type: interface
+              name: eno1
+              use_dhcp: true
+              primary: true
+            -
               type: ovs_bridge
               name: br-storage
               members:

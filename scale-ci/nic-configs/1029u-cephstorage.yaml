@@ -33,6 +33,10 @@ parameters:
     default: ''
     description: IP address/subnet on the management network
     type: string
+  ExternalNetworkVlanID:
+    default: 10
+    description: Vlan ID for the internal_api network traffic.
+    type: number
   InternalApiNetworkVlanID:
     default: 20
     description: Vlan ID for the internal_api network traffic.
@@ -48,6 +52,10 @@ parameters:
   ManagementNetworkVlanID:
     default: 60
     description: Vlan ID for the management network traffic.
+    type: number
+  StorageMgmtNetworkVlanID:
+    default: 70
+    description: Vlan ID for the storage management network traffic.
     type: number
   ControlPlaneSubnetCidr: # Override this via parameter_defaults
     default: '24'
@@ -82,7 +90,7 @@ resources:
           network_config:
             -
               type: interface
-              name: em3
+              name: eno1
               use_dhcp: true
               primary: true
             -
@@ -91,7 +99,7 @@ resources:
               members:
                 -
                   type: interface
-                  name: em1
+                  name: enp216s0f0
                   primary: true
                 -
                   type: vlan
@@ -105,7 +113,7 @@ resources:
               members:
                 -
                   type: interface
-                  name: p4p1
+                  name: enp175s0f0
                   primary: true
                 -
                   type: vlan
@@ -135,16 +143,7 @@ resources:
               members:
                 -
                   type: interface
-                  name: p4p2
-                  primary: true
-
-            -
-              type: ovs_bridge
-              name: br-api
-              members:
-                -
-                  type: interface
-                  name: em2
+                  name: enp175s0f1
                   primary: true
                 -
                   type: vlan
@@ -152,6 +151,22 @@ resources:
                   addresses:
                     -
                       ip_netmask: {get_param: InternalApiIpSubnet}
+
+            -
+              type: ovs_bridge
+              name: br-management
+              members:
+                -
+                  type: interface
+                  name: enp216s0f1
+                  primary: true
+                -
+                  type: vlan
+                  vlan_id: {get_param: StorageMgmtNetworkVlanID}
+                  addresses:
+                    -
+                      ip_netmask: {get_param: StorageMgmtIpSubnet}
+
 
 outputs:
   OS::stack_id:

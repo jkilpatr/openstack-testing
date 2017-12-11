@@ -131,7 +131,7 @@
     - OS::TripleO::Services::OctaviaWorker
 
 - name: R620Compute
-  CountDefault: 1
+  CountDefault: 0
   HostnameFormatDefault: '%stackname%-r620compute-%index%'
   disable_upgrade_deployment: True
   ServicesDefault:
@@ -160,7 +160,7 @@
     - OS::TripleO::Services::Collectd
 
 - name: R630Compute
-  CountDefault: 1
+  CountDefault: 0
   HostnameFormatDefault: '%stackname%-r630compute-%index%'
   disable_upgrade_deployment: True
   ServicesDefault:
@@ -189,7 +189,7 @@
     - OS::TripleO::Services::Collectd
 
 - name: R720xdCompute
-  CountDefault: 1
+  CountDefault: 0
   HostnameFormatDefault: '%stackname%-r720xdcompute-%index%'
   disable_upgrade_deployment: True
   ServicesDefault:
@@ -218,7 +218,7 @@
     - OS::TripleO::Services::Collectd
 
 - name: P1029Compute
-  CountDefault: 1
+  CountDefault: 0
   HostnameFormatDefault: '%stackname%-1029pcompute-%index%'
   disable_upgrade_deployment: True
   ServicesDefault:
