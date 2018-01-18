@@ -1,13 +1,13 @@
 parameter_defaults:
   ControllerSchedulerHints:
-    'capabilities:node': 'controller-%index%'
+    'capabilities:profile': 'controller'
   R720xdComputeSchedulerHints:
-    'capabilities:node': 'r720xdcompute-%index%'
+    'capabilities:profile': 'r720xdcompute'
   R630ComputeSchedulerHints:
-    'capabilities:node': 'r630compute-%index%'
+    'capabilities:profile': 'r630compute'
   R620ComputeSchedulerHints:
-    'capabilities:node': 'r620compute-%index%'
+    'capabilities:profile': 'r620compute'
   P1029ComputeSchedulerHints:
-    'capabilities:node': '1029pcompute-%index%'
+    'capabilities:profile': '1029pcompute'
   CephStorageSchedulerHints:
-    'capabilities:node': 'cephstorage-%index%'
+    'capabilities:profile': 'cephstorage'
